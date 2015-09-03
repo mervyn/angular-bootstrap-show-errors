@@ -47,8 +47,10 @@
           return toggleClasses(invalid);
         });
         scope.$on('show-errors-check-validity', function(event, currentForm) {
-          if (currentForm[inputName] != null)
+          if (currentForm && currentForm[inputName] != null)
             return toggleClasses(currentForm[inputName].$invalid);
+          else
+            return toggleClasses(formCtrl[inputName].$invalid);
         });
         scope.$on('show-errors-reset', function() {
           return $timeout(function() {
